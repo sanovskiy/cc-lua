@@ -123,6 +123,7 @@ local command = string.lower(args[1] or "selfupdate")
 local actions = {
   selfupdate = function (opts)
       updateRepo()
+      actions.install("san-get")
     end,
   install =  function (opts)
       local softName = opts[1]
