@@ -5,7 +5,7 @@ local entityIDs = {"ic2:mfsu", "ic2:mfe", "ic2:batbox"}
 local allEntities = {}
 
 for _, _v in pairs(entityIDs) do
-  for __, _p in pairs(_v) do
+  for __, _p in pairs(peripheral.find(_v) do
     table.insert(allEntities, _p)
   end
 end
