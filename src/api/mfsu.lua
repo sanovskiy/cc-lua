@@ -1,4 +1,4 @@
-local debug = os.loadAPI('/lib/debug')
+os.loadAPI('/lib/debug')
 
 local periNames = peripheral.getNames()
 debug.vardump(periNames)
