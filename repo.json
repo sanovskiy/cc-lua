@@ -34,5 +34,15 @@
       }
     ],
     "requires":["debug-api"]
-  }
+  },
+  "mfsumon": {
+    "files": [
+      {
+        "url":"src/mfsumon.lua",
+        "localname":"/mfsumon",
+      }
+    ],
+    "requires":["mfsu-api"]
+  },
+
 }
