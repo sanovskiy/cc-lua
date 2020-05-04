@@ -32,8 +32,7 @@ if sCommand == "get" then
     return
   end
   local appendix = '?' .. math.random(100000,999999)
-  local url = "https://raw.githubusercontent.com/sanovskiy/cc-lua/master/" .. textutils.urlEncode( sCode ) .. appendix
-  -- print("Getting "..url)
+  local url = "https://raw.githubusercontent.com/sanovskiy/cc-lua/master/" .. sCode .. appendix
   local response = http.get(url)
   if response then
     print( "Success." )
