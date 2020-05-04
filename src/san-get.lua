@@ -154,6 +154,12 @@ local actions = {
     local softName = opts[1]
     installSoftware(softName)
   end,
+  list = function (opts)
+    local repo = readRepoFile()
+    for softName,soft in pairs(repo) do
+      print(" "..softName..' - '..soft.desc)
+    end
+  end,
   help = function(x)
     printUsage()
   end

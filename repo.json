@@ -1,5 +1,6 @@
 {
   "san-get": {
+    "desc":"Package system",
     "files": [
       {
         "url":"src/san-get.lua",
@@ -9,6 +10,7 @@
     "requires":["san-gh"]
   },    
   "san-gh": {
+    "desc":"Github downloader",
     "files": [
       {
         "url":"src/san-gh.lua",
@@ -18,6 +20,7 @@
     "requires":[]
   },
   "debug-api": {
+    "desc":"Debug api",
     "files": [
       {
         "url":"src/api/debug.lua",
@@ -27,6 +30,7 @@
     "requires":[]
   },
   "mfsu-api": {
+    "desc":"IC2 MFSU api",
     "files": [
       {
         "url":"src/api/mfsu.lua",
@@ -36,6 +40,7 @@
     "requires":["debug-api"]
   },
   "mfsumon": {
+    "desc":"MFSU monitor",
     "files": [
       {
         "url":"src/mfsumon.lua",
@@ -43,6 +48,5 @@
       }
     ],
     "requires":["mfsu-api"]
-  },
-
+  }
 }
