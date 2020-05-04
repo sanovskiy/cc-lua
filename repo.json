@@ -63,7 +63,7 @@
     "desc":"IC2 reactor controller",
     "files": [
       {
-        "url":"src/reactorctl.lua",
+        "url":"src/reactor-monitor.lua",
         "localname":"/reactorctl",
       }
     ],
