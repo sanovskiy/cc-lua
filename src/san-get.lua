@@ -103,10 +103,14 @@ end
 function dloadSoftFiles(softName)
   local soft = readRepoFile()[softName]
   for _, file in pairs(soft.files) do
+    if fs.exists(file.localname..".tmp") then
+      fs.delete(file.localname..".tmp")
+    end
+    shell.run("san-gh","get "..file.url.." "..file.localname..".tmp")
     if fs.exists(file.localname) then
       fs.delete(file.localname)
     end
-    shell.run("san-gh","get "..file.url.." "..file.localname)
+    fs.move(file.localname..".tmp",file.localname)
   end
 end
 
