@@ -114,6 +114,23 @@ function dloadSoftFiles(softName)
   end
 end
 
+function installSoftware(softName)
+  local repo = readRepoFile()
+  if repo[softName] == nil then
+    error(softName .. " not found")
+    return
+  end
+  print("Installing " .. softName)
+  local reqs = calcRequirements(softName)
+  print("Requirements: "..(table.join(reqs,", ") or "NONE"))
+  for _, subSoftName in pairs(reqs) do
+    print("  Updating "..subSoftName)
+    dloadSoftFiles(subSoftName)
+  end
+  print("  Updating "..softName)
+  dloadSoftFiles(softName)
+end
+
 if not(fs.exists("/etc/repo.json")) then
 	updateRepo()
 end
@@ -123,24 +140,11 @@ local command = string.lower(args[1] or "help")
 local actions = {
   selfupdate = function (opts)
       updateRepo()
-      actions.install("san-get")
+      installSoftware("san-get")
     end,
   install =  function (opts)
       local softName = opts[1]
-      local repo = readRepoFile()
-      if repo[softName] == nil then
-        error(softName .. " not found")
-        return
-      end
-      print("Installing " .. softName)
-      local reqs = calcRequirements(softName)
-      print("Requirements: "..(table.join(reqs,", ") or "NONE"))
-      for _, subSoftName in pairs(reqs) do
-        print("  Updating "..subSoftName)
-        dloadSoftFiles(subSoftName)
-      end
-        print("  Updating "..softName)
-        dloadSoftFiles(softName)
+      installSoftware(softName)
     end,
   help = function(x)
     printUsage()
