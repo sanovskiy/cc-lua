@@ -150,6 +150,7 @@ local actions = {
   selfupdate = function (opts)
       updateRepo()
       installSoftware("san-get")
+      print("XYU!")
     end,
   install =  function (opts)
       local softName = opts[1]
