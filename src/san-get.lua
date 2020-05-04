@@ -106,11 +106,14 @@ function dloadSoftFiles(softName)
     if fs.exists(file.localname..".tmp") then
       fs.delete(file.localname..".tmp")
     end
-    shell.run("san-gh","get "..file.url.." "..file.localname..".tmp")
+    if not(shell.run("san-gh","get "..file.url.." "..file.localname..".tmp")) then
+      error("Failed to load "..file.url)
+      return
+    end
     if fs.exists(file.localname) then
       fs.delete(file.localname)
     end
-    fs.move(file.localname..".tmp",file.localname)
+    fs.move(file.localname..".tmp", file.localname)
   end
 end
 
