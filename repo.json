@@ -5,8 +5,8 @@
         "url":"src/san-get.lua",
         "localname":"/san-get",
       }
-    ]
-    "requres":["san-gh"]
+    ],
+    "requires":["san-gh"]
   },    
   "san-gh": {
     "files": [
@@ -14,7 +14,7 @@
         "url":"src/san-gh.lua",
         "localname":"san-gh",
       }
-    ]
-    "requres":[]
+    ],
+    "requires":[]
   }
 }

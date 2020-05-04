@@ -25,7 +25,7 @@ if sCommand == "get" then
  
   -- Determine file to download
   local sCode = tArgs[2]
-  local sFile = tArgs[3] .. ".lua"
+  local sFile = tArgs[3]
   local sPath = shell.resolve( sFile )
   if fs.exists( sPath ) then
     print( "File already exists" )
