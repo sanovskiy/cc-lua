@@ -16,5 +16,14 @@
       }
     ],
     "requires":[]
+  },
+  "mfsu-api": {
+    "files": [
+      {
+        "url":"src/api/mfsu.lua",
+        "localname":"/lib/mfsu",
+      }
+    ],
+    "requires":[]
   }
 }
