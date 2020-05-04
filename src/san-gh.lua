@@ -28,16 +28,16 @@ if sCommand == "get" then
   local sFile = tArgs[3]
   local sPath = shell.resolve( sFile )
   if fs.exists( sPath ) then
-    print( "File already exists" )
-    return
+    --print( "File already exists" )
+    fs.delete(sPath)
   end
   local appendix = '?' .. math.random(100000,999999)
   local url = "https://raw.githubusercontent.com/sanovskiy/cc-lua/master/" .. sCode .. appendix
   -- print ("GH: Loading "..url)
   local response = http.get(url)
   if response then
-    print( "Success." )
-   
+    -- print( "Success." )
+    
     local sResponse = response.readAll()
     response.close()
    
