@@ -117,6 +117,9 @@ function dloadSoftFiles(softName)
     end
     print("CP: "..file.localname..".tmp -> "..file.localname)
     fs.copy(file.localname..".tmp", file.localname)
+    if fs.exists(file.localname..".tmp") then
+      fs.delete(file.localname..".tmp")
+    end
   end
 end
 
