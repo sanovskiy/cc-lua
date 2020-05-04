@@ -18,8 +18,10 @@ end
 
 function getTotalCapacity()
 	local result = 0
-	for _,v in pairs(allEntities) do
-		result = result + v.getCapacity()
+	for _, v in pairs(allEntities) do
+		if v.getCapacity ~= nil then 
+			result = result + v.getEUCapacity()
+		end
 	end
 	return result
 end
