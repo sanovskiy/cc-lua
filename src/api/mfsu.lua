@@ -1,0 +1,1 @@
+local periNames = peripheral.getNames()
