@@ -116,7 +116,7 @@ function dloadSoftFiles(softName)
       fs.delete(file.localname)
     end
     -- print("MV: "..file.localname..".tmp -> "..file.localname)
-    fs.move(file.localname..".tmp", file.localname)
+    fs.copy(file.localname..".tmp", file.localname)
   end
 end
 
