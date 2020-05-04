@@ -17,6 +17,15 @@
     ],
     "requires":[]
   },
+  "debug-api": {
+    "files": [
+      {
+        "url":"src/api/debug.lua",
+        "localname":"/lib/debug",
+      }
+    ],
+    "requires":[]
+  },
   "mfsu-api": {
     "files": [
       {
@@ -24,6 +33,6 @@
         "localname":"/lib/mfsu",
       }
     ],
-    "requires":[]
+    "requires":["debug-api"]
   }
 }
