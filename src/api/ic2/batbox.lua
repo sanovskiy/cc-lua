@@ -1,8 +1,14 @@
 os.loadAPI('/lib/debug')
 
-local entityID = "ic2:mfsu"
+local entityID = {"ic2:mfsu","ic2:mfe","ic2:batbox"}
 
-allEntities = { peripheral.find(entityID) }
+local allEntities = {}
+
+for _,_v in pairs(entityIDs) do
+	for __,_p in pairs(_v) do
+		table.insert(allEntities,_p)
+	end
+end
 
 function getUnitsCount()
 	return #allEntities
@@ -19,9 +25,7 @@ end
 function getTotalCapacity()
 	local result = 0
 	for _, v in pairs(allEntities) do
-		if v.getCapacity ~= nil then 
-			result = result + v.getEUCapacity()
-		end
+		result = result + v.getEUCapacity()
 	end
 	return result
 end

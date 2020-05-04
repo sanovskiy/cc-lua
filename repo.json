@@ -29,24 +29,44 @@
     ],
     "requires":[]
   },
-  "mfsu-api": {
-    "desc":"IC2 MFSU api",
+  "events-api": {
+    "desc":"API for events",
     "files": [
       {
-        "url":"src/api/mfsu.lua",
-        "localname":"/lib/mfsu",
+        "url":"src/api/events.lua",
+        "localname":"/lib/events",
+      }
+    ],
+    "requires":[]
+  },
+  "ic2batbox-api": {
+    "desc":"IC2 energy storage api",
+    "files": [
+      {
+        "url":"src/api/ic2/batbox.lua",
+        "localname":"/lib/ic2batbox",
       }
     ],
     "requires":["debug-api"]
   },
-  "mfsumon": {
-    "desc":"MFSU monitor",
+  "ic2reactors-api": {
+    "desc":"IC2 reactors api",
     "files": [
       {
-        "url":"src/mfsumon.lua",
-        "localname":"/mfsumon",
+        "url":"src/api/ic2/reactors.lua",
+        "localname":"/lib/ic2reactors",
       }
     ],
-    "requires":["mfsu-api"]
+    "requires":["debug-api"]
+  },
+  "reactorctl": {
+    "desc":"IC2 reactor controller",
+    "files": [
+      {
+        "url":"src/reactorctl.lua",
+        "localname":"/reactorctl",
+      }
+    ],
+    "requires":["ic2batbox-api","ic2reactors-api"]
   }
 }
