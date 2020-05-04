@@ -1,5 +1,5 @@
 args = {...}
-command = args[1] of "help"
+command = args[1] or "help"
 args[2] = args[2] or ""
 
 if not(fs.exists("/etc")) then
