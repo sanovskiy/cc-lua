@@ -31,7 +31,7 @@ os.loadAPI("/lib/json")
 
 function printUsage()
   print("Usage: ")
-  print("  san-get <selfupdate|install <progname>|update <progname>>")
+  print("  san-get <selfupdate|install <progname>>")
   return
 end
 
@@ -82,21 +82,13 @@ function calcRequirements(softName,exclude)
   local repo = readRepoFile()
   exclude = exclude or {}
   local requirements = {}
---  vardump(repo)
-  vardump(repo[softName]["requires"])
   if repo[softName] ~= nil then
     if repo[softName]["requires"] ~= nil then
       for key, value in pairs(repo[softName]["requires"]) do
-        if func(key, value) ~= nil then
-          break
-        end
         if not(table.contains(requirements,value)) and not(table.contains(exclude,value)) then
           table.insert(requirements, value)
           table.insert(exclude, value)
           for key1, value1 in pairs(calcRequirements(value,exclude)) do
-            if func(key1, value1) ~= nil then
-              break
-            end
             if not(table.contains(requirements,value1)) then
               table.insert(requirements, value1)
             end
@@ -106,6 +98,16 @@ function calcRequirements(softName,exclude)
     end
   end
   return requirements
+end
+
+function dloadSoftFiles(softName)
+  local soft = readRepoFile()[softName]
+  for _, file in pairs(soft.files) do
+    if fs.exists(file.localname) then
+      fs.delete(file.localname)
+    end
+    shell.run("san-gh","get "..file.url.." "..file.localname)
+  end
 end
 
 if not(fs.exists("/etc/repo.json")) then
@@ -128,10 +130,13 @@ local actions = {
       print("Installing " .. softName)
       local reqs = calcRequirements(softName)
       print("Requirements: "..(table.join(reqs,", ") or "NONE"))
-    end,
-  update =  function (opts)
-      print("Updating " .. opts[1])
-    end,
+      for _, subSoftName in pairs(reqs) do
+        print("  Updating "..subSoftName)
+        dloadSoftFiles(subSoftName)
+      end
+        print("  Updating "..softName)
+        dloadSoftFiles(softName)
+    end
 }
 
 if actions[command] ~= nil then
