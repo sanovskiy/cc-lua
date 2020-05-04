@@ -1,5 +1,5 @@
 args = {...}
-command = args[1]
+command = args[1] of "help"
 args[2] = args[2] or ""
 
 if not(fs.exists("/etc")) then
@@ -118,7 +118,7 @@ if not(fs.exists("/etc/repo.json")) then
 	updateRepo()
 end
 
-local command = string.lower(args[1] or "selfupdate")
+local command = string.lower(args[1] or "help")
 
 local actions = {
   selfupdate = function (opts)
@@ -141,6 +141,9 @@ local actions = {
       end
         print("  Updating "..softName)
         dloadSoftFiles(softName)
+    end,
+  help = function(x)
+    printUsage()
     end
 }
 
