@@ -10,16 +10,16 @@ for _, _v in pairs(entityIDs) do
   end
 end
 
-function getAllEntities(){
+function getAllEntities()
   return allEntities
-}
+end
 
 function getUnitsCount()
   return #allEntities
 end
 
 function hasEmptySlots(entity)
-
+  
 end
 
 --function getTotalEnergy()
