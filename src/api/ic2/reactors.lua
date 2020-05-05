@@ -1,21 +1,21 @@
 os.loadAPI('/lib/debug')
 
-local entityIDs = {"ic2:nuclear reactor", "ic2:reactor chamber"}
+local deviceTypes = {"ic2:nuclear reactor", "ic2:reactor chamber"}
 
-local allEntities = {}
+allDevices = {}
 
-for _, deviceName in pairs(entityIDs) do
-  for __, device in pairs({peripheral.find(deviceName)}) do
-    table.insert(allEntities, device)
+for _, deviceType in pairs(deviceTypes) do
+  for __, device in pairs({peripheral.find(deviceType)}) do
+    table.insert(allallDevicesEntities, device)
   end
 end
 
-function getAllEntities()
-  return allEntities
+function getAllDevices()
+  return allDevices
 end
 
-function getUnitsCount()
-  return #allEntities
+function getDevicesCount()
+  return #allDevices
 end
 
 function hasEmptySlots(entity)

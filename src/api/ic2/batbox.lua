@@ -1,33 +1,31 @@
 os.loadAPI('/lib/debug')
 
-local entityIDs = {"ic2:mfsu", "ic2:mfe", "ic2:batbox"}
+local deviceTypes = {"ic2:mfsu", "ic2:mfe", "ic2:batbox"}
 
-local allEntities = {}
+local allDevices = {}
 
-for _, _v in pairs(entityIDs) do
-  for __, _p in pairs({peripheral.find(_v)}) do
-  	device = peripheral.wrap(_p)
-    table.insert(allEntities, device)
+for _, deviceType in pairs(deviceTypes) do
+  for __, device in pairs({peripheral.find(deviceType)}) do
+    table.insert(allDevices, device)
   end
 end
 
 function getUnitsCount()
-  return #allEntities
+  return #allDevices
 end
 
 function getTotalEnergy()
   local result = 0
-  for _, v in pairs(allEntities) do
-  	print(v)
-    result = result + v.getEUStored()
+  for _, device in pairs(allDevices) do
+    result = result + device.getEUStored()
   end
   return result
 end
 
 function getTotalCapacity()
   local result = 0
-  for _, v in pairs(allEntities) do
-    result = result + v.getEUCapacity()
+  for _, device in pairs(allDevices) do
+    result = result + device.getEUCapacity()
   end
   return result
 end
