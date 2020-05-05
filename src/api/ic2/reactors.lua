@@ -4,9 +4,14 @@ local deviceTypes = {"ic2:nuclear reactor", "ic2:reactor chamber"}
 
 allDevices = {}
 
+deviceSide = {}
+
 for _, deviceType in pairs(deviceTypes) do
   for __, device in pairs({peripheral.find(deviceType)}) do
-    table.insert(allallDevicesEntities, device)
+    if device.getReactorCore ~= nil then
+      device = device.getReactorCore()
+    end
+    table.insert(allDevices, device)
   end
 end
 

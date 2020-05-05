@@ -64,6 +64,10 @@
     "files": [
       {
         "url":"src/ic2/reactor-monitor.lua",
+        "localname":"/reactormon",
+      },
+      {
+        "url":"src/ic2/reactor-controller.lua",
         "localname":"/reactorctl",
       }
     ],
