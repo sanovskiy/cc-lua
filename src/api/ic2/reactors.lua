@@ -4,9 +4,9 @@ local entityIDs = {"ic2:nuclear reactor", "ic2:reactor chamber"}
 
 local allEntities = {}
 
-for _, _v in pairs(entityIDs) do
-  for __, _p in pairs(peripheral.find(_v)) do
-    table.insert(allEntities, _p)
+for _, deviceName in pairs(entityIDs) do
+  for __, device in pairs({peripheral.find(deviceName)}) do
+    table.insert(allEntities, device)
   end
 end
 

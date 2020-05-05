@@ -5,8 +5,9 @@ local entityIDs = {"ic2:mfsu", "ic2:mfe", "ic2:batbox"}
 local allEntities = {}
 
 for _, _v in pairs(entityIDs) do
-  for __, _p in pairs(peripheral.find(_v)) do
-    table.insert(allEntities, _p)
+  for __, _p in pairs({peripheral.find(_v)}) do
+  	device = peripheral.wrap(_p)
+    table.insert(allEntities, device)
   end
 end
 
@@ -17,6 +18,7 @@ end
 function getTotalEnergy()
   local result = 0
   for _, v in pairs(allEntities) do
+  	print(v)
     result = result + v.getEUStored()
   end
   return result
