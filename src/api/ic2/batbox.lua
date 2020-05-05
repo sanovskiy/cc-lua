@@ -2,7 +2,7 @@ os.loadAPI('/lib/debug')
 
 local deviceTypes = {"ic2:mfsu", "ic2:mfe", "ic2:batbox"}
 
-local allDevices = {}
+allDevices = {}
 
 for _, deviceType in pairs(deviceTypes) do
   for __, device in pairs({peripheral.find(deviceType)}) do
@@ -10,7 +10,11 @@ for _, deviceType in pairs(deviceTypes) do
   end
 end
 
-function getUnitsCount()
+function getAllDevices()
+  return allDevices
+end
+
+function getDevicesCount()
   return #allDevices
 end
 
